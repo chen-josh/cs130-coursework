@@ -3,9 +3,24 @@
     box-sizing: border-box;
 }
 
+h1{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 200px;
+    letter-spacing: -0.05em;
+    font-weight: lighter;
+    line-height: 85%;
+    color: white;
+}
+
 body {
     margin: 0px;
-    font-family: Arial, sans-serif;
+    font-family: Helvetica, sans-serif, sans-serif;
+    background-color: black;
+    color: white;
+    line-height: 1.7em;
+}
+a {
+    color: rgb(230, 205, 173);
 }
 header, section {
     padding: 20px;
@@ -15,7 +30,17 @@ p, li {
 }
 
 #inspiration {
-    background-color: #F0F0F0;
-    padding-top: 40px;
-    padding-bottom: 40px;
+    padding-bottom: 60px;
 }
+
+.column {
+    float: left;
+    width: 33.333%;
+  }
+  
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
