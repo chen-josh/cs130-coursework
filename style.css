@@ -15,6 +15,7 @@ h1{
 body {
     margin: 0px;
     font-family: Helvetica, sans-serif, sans-serif;
+    font-size: 15px;
     background-color: black;
     color: white;
     line-height: 1.7em;
