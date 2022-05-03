@@ -3,7 +3,6 @@ body {
     color: #fff;
 }
 a, a:hover, a:visited, a:active { 
-    color: #fff;
     text-decoration: none;
 }
 
@@ -98,7 +97,7 @@ aside h1 {
 aside a {
     display: flex;
     gap: 20px;
-    color: gray; /* not working? */
+    color: rgb(208, 208, 208); /* not working? */
 }
 
 aside .selected {
@@ -107,6 +106,9 @@ aside .selected {
     margin-left: -13px;
 }
 
+#sidebar a:hover {
+    color: white;
+}
 
 
 
@@ -124,6 +126,7 @@ header {
     margin-left: 0%;
     font-size: 13.5px;
     text-transform: uppercase;
+    letter-spacing: 0.12em;
     
 }
 
@@ -136,10 +139,14 @@ header {
 
 #profile {
     color: rgb(195, 195, 195);
-    font-weight: bold;
+    font-weight: 500;
     border-radius: 15px;
     padding: 6px 28px;
     background-color: #222;
+}
+
+#upgrade:hover, #profile:hover {
+    background-color:rgb(58, 58, 58);
 }
 
 nav {
@@ -151,7 +158,16 @@ nav {
     font-size: 12px;
     letter-spacing: 2px;
     font-weight: 500;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
+}
+
+nav a{
+    color: white;
+}
+
+nav a:hover {
+    border-bottom: 3px solid rgb(30, 174, 30);
+    padding-bottom: 5px;
 }
 
 nav .selected {
@@ -199,6 +215,18 @@ article p {
     color: rgb(181, 181, 181);
 }
 
+.play-button {
+    opacity: 0;
+    background-color: white;
+    padding: 7px 10px;
+    border: 0px;
+    border-radius: 100%;
+    align-self: flex-end;
+}
+
+.artist-card:hover .play-button{
+    opacity: 1;
+}
 
 
 
