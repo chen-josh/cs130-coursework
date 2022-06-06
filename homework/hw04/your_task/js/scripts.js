@@ -17,6 +17,31 @@ const search = (ev) => {
 }
 
 const getTracks = (term) => {
+    let link = `https://www.apitutor.org/spotify/simple/v1/search?type=track&q=${term}`;
+    const element = document.querySelector("#tracks");
+    element.innerHTML = "";
+    
+    fetch(link)
+        .then(response => {
+            return response.json();
+        })
+        .then(data => {
+            console.log(data);
+            if(data.length > 0){
+                for (const track of data.slice(0, 5)){
+                    element.innerHTML += `<button class="track-item preview" data-preview-track="${track.preview_url}" onclick="handleTrackClick(event);">
+                    <img src="${track.album.image_url}">
+                    <i class="fas play-track fa-play" aria-hidden="true"></i>
+                    <div class="label">
+                        <h2>${track.name}</h2>
+                        <p>
+                            ${track.artist.name}
+                        </p>
+                    </div>
+                </button>`;
+                }
+            }
+        })
     console.log(`
         get tracks from spotify based on the search term
         "${term}" and load them into the #tracks section 
@@ -24,20 +49,61 @@ const getTracks = (term) => {
 };
 
 const getAlbums = (term) => {
-    console.log(`
-        get albums from spotify based on the search term
-        "${term}" and load them into the #albums section 
-        of the DOM...`);
-};
-
-const getArtist = (term) => {
-    let link = 'https://www.apitutor.org/spotify/simple/v1/search?type=artist&q=${term}';
+    let link = `https://www.apitutor.org/spotify/simple/v1/search?type=album&q=${term}`;
+    const element = document.querySelector("#albums");
+    element.innerHTML = "";
+    
     fetch(link)
         .then(response => {
             return response.json();
         })
         .then(data => {
             console.log(data);
+            if(data.length > 0){
+                for (const album of data){
+                    element.innerHTML += `<section class="album-card" id="${album.id}">
+                    <div>
+                        <img src="${album.image_url}">
+                        <h2>${album.name}</h2>
+                        <div class="footer">
+                            <a href="${album.spotify_url}" target="_blank">
+                                view on spotify
+                            </a>
+                        </div>
+                    </div>
+                </section>`;
+                }
+            }
+        })
+};
+
+const getArtist = (term) => {
+    let link = `https://www.apitutor.org/spotify/simple/v1/search?type=artist&q=${term}`;
+    const element = document.querySelector("#artist");
+    element.innerHTML = "";
+    fetch(link)
+        .then(response => {
+            return response.json();
+        })
+        .then(data => {
+            console.log(data);
+            if(data.length > 0){
+                const firstArtist = data[0];
+                element.innerHTML += `<section class="artist-card" id="${firstArtist.id}">
+                    <div>
+                        <img src="${firstArtist.image_url}">
+                        <h2>${firstArtist.name}</h2>
+                        <div class="footer">
+                            <a href="${firstArtist.spotify_url}" target="_blank">
+                                view on spotify
+                            </a>
+                        </div>
+                    </div>
+                </section>`;
+            }
+            else{
+                element.innerHTML += "No artist found that matches search criteria";
+            }
         })
     console.log(`
         get artists from spotify based on the search term
@@ -48,6 +114,9 @@ const getArtist = (term) => {
 const handleTrackClick = (ev) => {
     const previewUrl = ev.currentTarget.getAttribute('data-preview-track');
     console.log(previewUrl);
+    audioPlayer.setAudioFile(previewUrl);
+    audioPlayer.play();
+    document.querySelector("#current-track").innerHTML = ev.currentTarget.innerHTML;
 }
 
 document.querySelector('#search').onkeyup = (ev) => {

@@ -1,0 +1,87 @@
+body {
+	animation-name: backgroundColorPalette;
+	animation-duration: 50s;
+	animation-iteration-count: infinite;
+	animation-direction: alternate;
+	animation-timing-function: linear; 
+}
+
+@keyframes backgroundColorPalette {
+	0% {
+		background: #b9d6d0;
+	}
+	25% {
+		background: #dbbbb1;
+	}
+	50% {
+		background: #BEBF93;
+	}
+	75% {
+		background: #b5b298;
+	}
+	100% {
+		background: #d4d3e1;
+	}
+}
+
+main {
+    display: flex;
+    justify-content: center;
+}
+
+.distortion{
+    width: 400px;
+    height: 600px;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    font-family: 'Cormorant', serif;
+    font-weight: 300;
+    font-size: 9pt;
+    letter-spacing: 1px;
+  }
+  
+  li {
+    float: left;
+  }
+  
+  li a {
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+  li a:hover {
+    color: rgb(226, 94, 54);
+  }
+
+h1{
+    font-family: 'Cormorant', serif;
+    font-weight: 600;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    position: fixed;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    color: white;
+}
+
+p{
+    font-family: 'Cormorant', serif;
+    font-weight: 300;
+    font-style: italic;
+    font-size: 10pt;
+    text-align: center;
+    position: fixed;
+    transform: translate(-50%, -50%);
+    top: 52.75%;
+    left: 50%;
+    color: black;
+}
