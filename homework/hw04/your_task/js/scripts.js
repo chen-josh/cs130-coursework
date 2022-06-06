@@ -41,6 +41,9 @@ const getTracks = (term) => {
                 </button>`;
                 }
             }
+            else{
+                element.innerHTML += "No tracks found that match search criteria";
+            }
         })
     console.log(`
         get tracks from spotify based on the search term
